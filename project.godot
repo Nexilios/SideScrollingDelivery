@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Side Scrolling Delivery"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
@@ -25,3 +26,12 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="Side Scrolling Delivery"
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

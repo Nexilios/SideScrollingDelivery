@@ -1,0 +1,18 @@
+[remap]
+
+importer="iseesharp83.kenney.spritesheet.importer"
+type="Resource"
+uid="uid://df2gobicgrnai"
+path="res://.godot/imported/alienYellow.png-37fa6a50e3b8389ddbbf2e1d88d30a03.res"
+
+[deps]
+
+files=["res://assets/character/alien_yellow_resource/alienYellow.tres", "res://assets/character/alien_yellow_resource/alienYellow_climb1.tres", "res://assets/character/alien_yellow_resource/alienYellow_climb2.tres", "res://assets/character/alien_yellow_resource/alienYellow_duck.tres", "res://assets/character/alien_yellow_resource/alienYellow_hurt.tres", "res://assets/character/alien_yellow_resource/alienYellow_jump.tres", "res://assets/character/alien_yellow_resource/alienYellow_stand.tres", "res://assets/character/alien_yellow_resource/alienYellow_swim1.tres", "res://assets/character/alien_yellow_resource/alienYellow_swim2.tres", "res://assets/character/alien_yellow_resource/alienYellow_walk1.tres", "res://assets/character/alien_yellow_resource/alienYellow_walk2.tres"]
+
+source_file="res://assets/character/alienYellow.png"
+dest_files=["res://.godot/imported/alienYellow.png-37fa6a50e3b8389ddbbf2e1d88d30a03.res", "res://assets/character/alien_yellow_resource/alienYellow.tres", "res://assets/character/alien_yellow_resource/alienYellow_climb1.tres", "res://assets/character/alien_yellow_resource/alienYellow_climb2.tres", "res://assets/character/alien_yellow_resource/alienYellow_duck.tres", "res://assets/character/alien_yellow_resource/alienYellow_hurt.tres", "res://assets/character/alien_yellow_resource/alienYellow_jump.tres", "res://assets/character/alien_yellow_resource/alienYellow_stand.tres", "res://assets/character/alien_yellow_resource/alienYellow_swim1.tres", "res://assets/character/alien_yellow_resource/alienYellow_swim2.tres", "res://assets/character/alien_yellow_resource/alienYellow_walk1.tres", "res://assets/character/alien_yellow_resource/alienYellow_walk2.tres"]
+
+[params]
+
+spritesheet_xml_file="res://assets/character/alienYellow.xml"
+destination_folder="res://assets/character/alien_yellow_resource"
