@@ -1,7 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkyprnm4r55ag"]
+[gd_scene load_steps=9 format=3 uid="uid://bkyprnm4r55ag"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_k4knk"]
 [ext_resource type="Texture2D" uid="uid://daeaegn0u47hy" path="res://assets/character/tilemap-characters.png" id="2_iwedn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wimg1"]
+atlas = ExtResource("2_iwedn")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thkuc"]
+atlas = ExtResource("2_iwedn")
+region = Rect2(25, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjfng"]
 atlas = ExtResource("2_iwedn")
@@ -13,6 +21,22 @@ region = Rect2(25, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bai2p"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wimg1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thkuc")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bjfng")
@@ -39,6 +63,7 @@ script = ExtResource("1_k4knk")
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_bai2p")
 animation = &"walk"
+frame_progress = 0.969584
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6.05)
