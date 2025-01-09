@@ -4,15 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://evqfesl1pq0y" path="res://assets/packages/wooden_package.png" id="2_62h2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwndq"]
-size = Vector2(12.0076, 15.9995)
+size = Vector2(12, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qp4xv"]
 radius = 20.0
 
 [node name="Package" instance=ExtResource("1_4bobf")]
+mass = 3.0
+package_score = 100.0
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(-3.19555e-05, -0.00401294)
+position = Vector2(-0.0238561, 0.0282943)
 rotation = 1.56277
 shape = SubResource("RectangleShape2D_gwndq")
 

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://sgo37hsexygk" path="res://assets/packages/long_package.png" id="2_5pshk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0wnu"]
-radius = 2.66667
+radius = 3.0
 height = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qecs1"]
@@ -12,6 +12,7 @@ radius = 20.0
 
 [node name="Package" instance=ExtResource("1_puqga")]
 mass = 1.5
+package_score = 75.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 scale = Vector2(1.5, 1.5)

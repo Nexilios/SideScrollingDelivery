@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bum26ssvlawow"]
+[gd_scene load_steps=5 format=3 uid="uid://bum26ssvlawow"]
 
 [ext_resource type="Script" path="res://scripts/package.gd" id="1_hdy3s"]
 [ext_resource type="PackedScene" uid="uid://4skxeuoh7okk" path="res://scenes/hovering_label.tscn" id="2_djtao"]
+[ext_resource type="Script" path="res://scripts/priority_area2d.gd" id="2_fclgs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7732v"]
 font_size = 20
@@ -22,6 +23,9 @@ script = ExtResource("1_hdy3s")
 [node name="CollectArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
+input_pickable = false
+monitorable = false
+script = ExtResource("2_fclgs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
 
@@ -36,5 +40,6 @@ label_settings = SubResource("LabelSettings_7732v")
 
 [connection signal="body_entered" from="CollectArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="CollectArea" to="." method="_on_body_exited"]
+[connection signal="handle_interaction" from="CollectArea" to="." method="_handle_interaction"]
 
 [editable path="Label"]

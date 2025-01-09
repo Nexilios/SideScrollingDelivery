@@ -695,6 +695,7 @@ shape = SubResource("WorldBoundaryShape2D_uhqjm")
 
 [node name="Player" parent="." instance=ExtResource("1_byd86")]
 position = Vector2(406, 528)
+push_force = 60.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -19)
