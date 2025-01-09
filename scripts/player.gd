@@ -74,8 +74,6 @@ func _physics_process(delta: float) -> void:
 	
 	# Apply impulse if colliding with RigidBody
 	for i in get_slide_collision_count():
-		if get_slide_collision_count() > 1:
-			print(get_slide_collision(i))
 		var c: KinematicCollision2D = get_slide_collision(i)
 		if c.get_collider() is RigidBody2D:
 			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
