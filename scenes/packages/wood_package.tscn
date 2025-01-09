@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://druddlsdcmbsf"]
+
+[ext_resource type="PackedScene" uid="uid://bum26ssvlawow" path="res://scenes/packages/base_package.tscn" id="1_4bobf"]
+[ext_resource type="Texture2D" uid="uid://evqfesl1pq0y" path="res://assets/packages/wooden_package.png" id="2_62h2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kotn"]
+size = Vector2(11.9918, 16.0078)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ityy2"]
+radius = 18.0
+
+[node name="Package" instance=ExtResource("1_4bobf")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.0121552, -0.0039835)
+rotation = 1.56277
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_0kotn")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_62h2x")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_ityy2")
+
+[editable path="Label"]

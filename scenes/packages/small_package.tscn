@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1sspndafn08f"]
+
+[ext_resource type="PackedScene" uid="uid://bum26ssvlawow" path="res://scenes/packages/base_package.tscn" id="1_m1npo"]
+[ext_resource type="Texture2D" uid="uid://kowh3uyqqtft" path="res://assets/packages/small_package.png" id="2_45xte"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3m4yx"]
+size = Vector2(10, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_72ahp"]
+radius = 15.0
+
+[sub_resource type="Animation" id="Animation_7acc2"]
+resource_name = "small_pack_text_hover"
+length = 2.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7rdjq"]
+_data = {
+"small_pack_text_hover": SubResource("Animation_7acc2")
+}
+
+[node name="Package" instance=ExtResource("1_m1npo")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_3m4yx")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_45xte")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_72ahp")
+
+[node name="AnimationPlayer" parent="Label" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_7rdjq")
+}
+
+[editable path="Label"]
