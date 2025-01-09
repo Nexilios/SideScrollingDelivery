@@ -1,4 +1,4 @@
-class_name Truck extends Area2D
+class_name Truck extends PriorityArea2D
 
 @export var packages: Array[String]
 
@@ -7,13 +7,6 @@ var on_delivery: bool = false
 
 @onready var label: Label = $Label
 @onready var spawn_point: Marker2D = $PackageSpawnPoint
-
-
-func _ready() -> void:
-	InputManager.register_area(self)
-	
-func _exit_tree() -> void:
-	InputManager.unregister_area(self)
 
 func setup_recipients(recipients: Array[Recipient]) -> void:
 	randomize()
@@ -39,9 +32,6 @@ func give_random_recp_id() -> int:
 func package_delivered() -> void:
 	on_delivery = false
 
-func handle_interaction() -> void:
-	_spawn_package()
-
 func _spawn_package() -> void:
 	on_delivery = true
 	var recipient_id: int = give_random_recp_id()
@@ -53,8 +43,14 @@ func _spawn_package() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
+		InputManager.register_area(self)
 		label.start_animation()
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
+		InputManager.unregister_area(self)
 		label.stop_animation()
+
+func _handle_interaction() -> void:
+	if not on_delivery:
+		_spawn_package()
