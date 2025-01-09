@@ -9,8 +9,6 @@ class_name BasePackage extends RigidBody2D
 var _package_id: int:
 	set = set_package_id
 	
-func handle_interaction() -> void:
-	pass
 
 func set_package_id(id: int) -> void:
 	if id >= 0:
