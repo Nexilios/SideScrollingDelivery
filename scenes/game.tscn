@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl0ja6aeutr2y"]
+[gd_scene load_steps=12 format=3 uid="uid://dl0ja6aeutr2y"]
 
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_50hkl"]
 [ext_resource type="PackedScene" uid="uid://bkyprnm4r55ag" path="res://scenes/player.tscn" id="1_byd86"]
 [ext_resource type="Texture2D" uid="uid://bi15a10ptvwf2" path="res://assets/tileset/tilemap-backgrounds.png" id="1_gqarg"]
 [ext_resource type="Texture2D" uid="uid://ngxhyvubepfh" path="res://assets/tileset/tilemap.png" id="2_sk5vj"]
+[ext_resource type="PackedScene" uid="uid://db6p0de700xhc" path="res://scenes/truck.tscn" id="4_xj2wq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjw2x"]
 texture = ExtResource("1_gqarg")
@@ -656,6 +658,7 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_50hkl")
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_08dui")
@@ -694,11 +697,16 @@ shape = SubResource("WorldBoundaryShape2D_uhqjm")
 position = Vector2(406, 528)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-limit_left = -295
+position = Vector2(0, -19)
+zoom = Vector2(2.5, 2.5)
+limit_left = -290
 limit_top = 240
 limit_right = 1285
 limit_bottom = 720
 limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
+
+[node name="Truck" parent="." instance=ExtResource("4_xj2wq")]
+z_index = 1
+position = Vector2(317, 531)

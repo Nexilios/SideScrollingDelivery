@@ -55,6 +55,7 @@ radius = 6.0
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
+collision_mask = 5
 floor_snap_length = 3.0
 safe_margin = 0.06
 script = ExtResource("1_k4knk")
@@ -62,8 +63,8 @@ script = ExtResource("1_k4knk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_bai2p")
-animation = &"walk"
-frame_progress = 0.969584
+animation = &"idle"
+frame_progress = 0.106711
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6.05)

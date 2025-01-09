@@ -1,13 +1,14 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 # Jump configuration
 @export var cell_size: int = 18 # World's cell size in pixels
-@export var jump_height: float = 4.0  # Desired jump height in cells (multiply by cell_size)
+@export var jump_height: float = 3.0  # Desired jump height in cells (multiply by cell_size)
 @export var jump_time_to_peak: float = 0.4  # Time to reach peak of jump
-@export var jump_time_to_descent: float = 0.3  # Time to fall from peak
+@export var jump_time_to_descent: float = 0.28 # Time to fall from peak
 
 # Movement configuration
 @export var speed: float = 125.0
+@export var push_force: float = 30.0
 
 # Automatically calculated physics variables
 var jump_velocity: float
@@ -65,3 +66,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
 	move_and_slide()
+	
+	# Apply impulse if colliding with RigidBody
+	for i in get_slide_collision_count():
+		if get_slide_collision_count() > 1:
+			print(get_slide_collision(i))
+		var c: KinematicCollision2D = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
