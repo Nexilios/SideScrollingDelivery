@@ -19,11 +19,11 @@ script = ExtResource("1_hdy3s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollectArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
 
 [node name="Label" parent="." instance=ExtResource("2_djtao")]
 offset_left = -6.0
@@ -34,7 +34,7 @@ pivot_offset = Vector2(6, 40)
 text = "E"
 label_settings = SubResource("LabelSettings_7732v")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="CollectArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="CollectArea" to="." method="_on_body_exited"]
 
 [editable path="Label"]

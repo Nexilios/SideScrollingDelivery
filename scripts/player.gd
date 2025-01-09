@@ -27,6 +27,11 @@ func _ready() -> void:
 	# Calculate gravity for falling
 	fall_gravity = (2.0 * jump_height * cell_size) / pow(jump_time_to_descent, 2)
 
+# Handle Interactions
+func _unhandled_input(event):
+	if event.is_action_pressed("interact"):
+		InputManager.handle_interaction()
+
 func _physics_process(delta: float) -> void:
 	# Apply appropriate gravity based on vertical movement
 	if not is_on_floor():

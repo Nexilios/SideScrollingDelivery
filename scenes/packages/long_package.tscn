@@ -3,25 +3,25 @@
 [ext_resource type="PackedScene" uid="uid://bum26ssvlawow" path="res://scenes/packages/base_package.tscn" id="1_puqga"]
 [ext_resource type="Texture2D" uid="uid://sgo37hsexygk" path="res://assets/packages/long_package.png" id="2_5pshk"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1l74d"]
-radius = 3.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0wnu"]
+radius = 2.66667
 height = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_livdw"]
-radius = 18.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_qecs1"]
+radius = 20.0
 
 [node name="Package" instance=ExtResource("1_puqga")]
 mass = 1.5
 
 [node name="CollisionShape2D" parent="." index="0"]
 scale = Vector2(1.5, 1.5)
-shape = SubResource("CapsuleShape2D_1l74d")
+shape = SubResource("CapsuleShape2D_u0wnu")
 
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_5pshk")
 
-[node name="CollisionShape2D" parent="Area2D" index="0"]
-shape = SubResource("CircleShape2D_livdw")
+[node name="CollisionShape2D" parent="CollectArea" index="0"]
+shape = SubResource("CircleShape2D_qecs1")
 
 [editable path="Label"]

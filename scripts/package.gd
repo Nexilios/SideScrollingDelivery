@@ -1,10 +1,23 @@
 class_name BasePackage extends RigidBody2D
 
-@export var package_score: float = 50.0
 @onready var label: HoveringLabel = $Label
+@onready var collect_area: Area2D = $CollectArea
+
+@export var package_score: float = 50.0
+
 
 var _package_id: int:
 	set = set_package_id
+
+
+func _ready() -> void:
+	InputManager.register_area(collect_area)
+	
+func _exit_tree() -> void:
+	InputManager.unregister_area(collect_area)
+	
+func handle_interaction() -> void:
+	pass
 
 func set_package_id(id: int) -> void:
 	if id >= 0:

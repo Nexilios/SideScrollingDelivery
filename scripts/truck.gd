@@ -8,6 +8,13 @@ var on_delivery: bool = false
 @onready var label: Label = $Label
 @onready var spawn_point: Marker2D = $PackageSpawnPoint
 
+
+func _ready() -> void:
+	InputManager.register_area(self)
+	
+func _exit_tree() -> void:
+	InputManager.unregister_area(self)
+
 func setup_recipients(recipients: Array[Recipient]) -> void:
 	randomize()
 	recipients_data.clear()
@@ -32,7 +39,10 @@ func give_random_recp_id() -> int:
 func package_delivered() -> void:
 	on_delivery = false
 
-func spawn_package() -> void:
+func handle_interaction() -> void:
+	_spawn_package()
+
+func _spawn_package() -> void:
 	on_delivery = true
 	var recipient_id: int = give_random_recp_id()
 	var package: BasePackage = load(packages.pick_random()).instantiate()
