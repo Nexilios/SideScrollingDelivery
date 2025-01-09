@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dl0ja6aeutr2y"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_50hkl"]
+[ext_resource type="PackedScene" uid="uid://kadvgg4106co" path="res://scenes/game_manager.tscn" id="1_41nem"]
 [ext_resource type="PackedScene" uid="uid://bkyprnm4r55ag" path="res://scenes/player.tscn" id="1_byd86"]
 [ext_resource type="Texture2D" uid="uid://bi15a10ptvwf2" path="res://assets/tileset/tilemap-backgrounds.png" id="1_gqarg"]
 [ext_resource type="Texture2D" uid="uid://ngxhyvubepfh" path="res://assets/tileset/tilemap.png" id="2_sk5vj"]
@@ -658,7 +658,9 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_50hkl")
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("truck") instance=ExtResource("1_41nem")]
+truck = NodePath("../Truck")
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_08dui")

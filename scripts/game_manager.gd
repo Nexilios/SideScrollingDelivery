@@ -1,9 +1,8 @@
-class_name GameManager extends Node2D
+class_name GameManager extends Node
 
 signal game_over(score: int)
 
-@onready var truck: Truck = $Truck
-
+@export var truck: Truck
 @export var recipients: Array[Recipient]
 
 
@@ -15,12 +14,11 @@ func _ready() -> void:
 		set_recipient_id()
 		truck.setup_recipients(recipients)
 		
-		var start_timer: Callable = Callable(func():
-			get_tree().create_timer(60).timeout.connect(stop_game)
-		)
-		
-		start_timer.call_deferred()
-		
+	if truck:
+		truck.package_spawned.connect(start_game, CONNECT_ONE_SHOT)
+
+func start_game() -> void:
+	get_tree().create_timer(60).timeout.connect(stop_game)
 
 func set_recipient_id() -> void:
 	for recipient in recipients:
