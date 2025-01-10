@@ -37,6 +37,10 @@ func _ready() -> void:
 	# Setup pause menu ui
 	if pause_menu:
 		pause_menu.exit_game.connect(stop_game)
+	
+	# Setup game_over menu ui
+	if game_over_menu:
+		game_over_menu.exit_game.connect(stop_game)
 
 func start_game() -> void:
 	if timer:
@@ -61,5 +65,4 @@ func stop_game(quit: bool) -> void:
 	if quit:
 		get_tree().quit()
 	else:
-		# Back to main menu
-		pass
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

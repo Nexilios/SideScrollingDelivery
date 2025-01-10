@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwu2bwtpa7kmw"]
+
+[ext_resource type="LabelSettings" uid="uid://dj02u8vyrmacq" path="res://assets/styles/main_menu/menu_label_style.tres" id="1_d54t8"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_lra7q"]
+[ext_resource type="StyleBox" uid="uid://3f0s1taheqgb" path="res://assets/styles/main_menu/main_menu_button_normal.tres" id="2_8glga"]
+[ext_resource type="LabelSettings" uid="uid://4k17ftujrpsf" path="res://assets/styles/main_menu/menu_score_label_style.tres" id="2_ki78n"]
+[ext_resource type="StyleBox" uid="uid://brunsepw4tqku" path="res://assets/styles/main_menu/main_menu_button_hover.tres" id="5_klxy3"]
+[ext_resource type="StyleBox" uid="uid://do3aj4jyu6btl" path="res://assets/styles/main_menu/main_menu_button_pressed.tres" id="6_gwhr1"]
+
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lra7q")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -273.0
+offset_top = 194.0
+offset_right = 274.0
+offset_bottom = 278.0
+grow_horizontal = 2
+pivot_offset = Vector2(273, 42)
+text = "FOREIGN DELIVERY"
+label_settings = ExtResource("1_d54t8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HightscoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -570.0
+offset_top = -298.0
+offset_right = -381.0
+offset_bottom = -208.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(94, 42)
+text = "HI-SCORE
+9999"
+label_settings = ExtResource("2_ki78n")
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = 2.0
+offset_right = 144.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.129412, 0.301961, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.129412, 0.301961, 1)
+theme_override_colors/font_hover_color = Color(0, 0.129412, 0.301961, 1)
+theme_override_colors/font_outline_color = Color(0, 0.129412, 0.301961, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = ExtResource("2_8glga")
+theme_override_styles/hover = ExtResource("5_klxy3")
+theme_override_styles/pressed = ExtResource("6_gwhr1")
+text = "START GAME"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.129412, 0.301961, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.129412, 0.301961, 1)
+theme_override_colors/font_hover_color = Color(0, 0.129412, 0.301961, 1)
+theme_override_colors/font_outline_color = Color(0, 0.129412, 0.301961, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = ExtResource("2_8glga")
+theme_override_styles/hover = ExtResource("5_klxy3")
+theme_override_styles/pressed = ExtResource("6_gwhr1")
+text = "QUIT"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -3,6 +3,7 @@ class_name GameOverMenu extends Control
 @onready var header: Label = $Header
 @onready var highscore: Label = $Highscore
 
+signal exit_game(state: bool)
 
 func _ready() -> void:
 	hide()
@@ -17,9 +18,8 @@ func _on_restart_button_pressed() -> void:
 
 
 func _on_menu_button_pressed() -> void:
-	# Move to main menu
-	pass
+	exit_game.emit(false)
 	
 
 func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+	exit_game.emit(true)
