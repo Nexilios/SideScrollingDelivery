@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7bg808610anm"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_2td3u"]
+[ext_resource type="StyleBox" uid="uid://cl77ayu4xuq5n" path="res://assets/styles/pause_button_normal.tres" id="2_qeeim"]
+[ext_resource type="StyleBox" uid="uid://dvrvjh30t00pt" path="res://assets/styles/pause_button_hover.tres" id="3_n4xdy"]
+[ext_resource type="StyleBox" uid="uid://duda7fwb0urwr" path="res://assets/styles/pause_button_pressed.tres" id="4_2lamd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u0jrx"]
+font_size = 72
+font_color = Color(0.870588, 0.662745, 0.345098, 1)
+shadow_size = 5
+shadow_color = Color(0.503426, 0.370268, 0.155438, 1)
+shadow_offset = Vector2(0.21, 2.72)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2td3u")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 1.78
+stretch_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer"]
+layout_mode = 2
+color = Color(0.220589, 0.374196, 0.26205, 0.878431)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.5
+offset_top = 184.0
+offset_right = 174.5
+offset_bottom = 253.0
+grow_horizontal = 2
+pivot_offset = Vector2(174, 34)
+text = "GAME PAUSED"
+label_settings = SubResource("LabelSettings_u0jrx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.5
+offset_top = -5.0
+offset_right = 158.5
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(158, 122)
+theme_override_constants/separation = 16
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.870588, 0.662745, 0.345098, 1)
+theme_override_colors/font_pressed_color = Color(0.813869, 0.609067, 0.290064, 1)
+theme_override_colors/font_hover_color = Color(0.790712, 0.589043, 0.273252, 1)
+theme_override_colors/font_focus_color = Color(0.870588, 0.662745, 0.345098, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("2_qeeim")
+theme_override_styles/hover = ExtResource("3_n4xdy")
+theme_override_styles/pressed = ExtResource("4_2lamd")
+theme_override_styles/focus = ExtResource("2_qeeim")
+text = "RESUME"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.870588, 0.662745, 0.345098, 1)
+theme_override_colors/font_pressed_color = Color(0.813869, 0.609067, 0.290064, 1)
+theme_override_colors/font_hover_color = Color(0.790712, 0.589043, 0.273252, 1)
+theme_override_colors/font_focus_color = Color(0.870588, 0.662745, 0.345098, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("2_qeeim")
+theme_override_styles/hover = ExtResource("3_n4xdy")
+theme_override_styles/pressed = ExtResource("4_2lamd")
+theme_override_styles/focus = ExtResource("2_qeeim")
+text = "MAIN MENU
+"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.870588, 0.662745, 0.345098, 1)
+theme_override_colors/font_pressed_color = Color(0.813869, 0.609067, 0.290064, 1)
+theme_override_colors/font_hover_color = Color(0.790712, 0.589043, 0.273252, 1)
+theme_override_colors/font_focus_color = Color(0.870588, 0.662745, 0.345098, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("2_qeeim")
+theme_override_styles/hover = ExtResource("3_n4xdy")
+theme_override_styles/pressed = ExtResource("4_2lamd")
+theme_override_styles/focus = ExtResource("2_qeeim")
+text = "QUIT GAME
+"
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="resume_game"]
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="back_to_menu"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit_game"]
