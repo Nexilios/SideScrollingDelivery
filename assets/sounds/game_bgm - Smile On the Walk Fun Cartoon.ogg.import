@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bpejft8qanlw6"
+path="res://.godot/imported/game_bgm - Smile On the Walk Fun Cartoon.ogg-529e478b1bd1fa7803f6f1c78da76e85.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/game_bgm - Smile On the Walk Fun Cartoon.ogg"
+dest_files=["res://.godot/imported/game_bgm - Smile On the Walk Fun Cartoon.ogg-529e478b1bd1fa7803f6f1c78da76e85.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

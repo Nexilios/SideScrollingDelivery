@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 InputManager="*res://scripts/input_manager.gd"
 HighscoreManager="*res://scripts/highscore_manager.gd"
+BackgroundMusic="*res://scenes/bgm.tscn"
 
 [display]
 
@@ -67,6 +68,7 @@ pause={
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
+2d_physics/layer_3="Package"
 
 [rendering]
 
