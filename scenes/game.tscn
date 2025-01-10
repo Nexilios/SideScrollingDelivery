@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://dl0ja6aeutr2y"]
+[gd_scene load_steps=20 format=3 uid="uid://dl0ja6aeutr2y"]
 
 [ext_resource type="PackedScene" uid="uid://kadvgg4106co" path="res://scenes/game_manager.tscn" id="1_41nem"]
 [ext_resource type="PackedScene" uid="uid://bkyprnm4r55ag" path="res://scenes/player.tscn" id="1_byd86"]
 [ext_resource type="Texture2D" uid="uid://bi15a10ptvwf2" path="res://assets/tileset/tilemap-backgrounds.png" id="1_gqarg"]
 [ext_resource type="Texture2D" uid="uid://ngxhyvubepfh" path="res://assets/tileset/tilemap.png" id="2_sk5vj"]
+[ext_resource type="PackedScene" uid="uid://b0of6io1c322v" path="res://scenes/score_label.tscn" id="3_g4npx"]
 [ext_resource type="PackedScene" uid="uid://db6p0de700xhc" path="res://scenes/truck.tscn" id="4_xj2wq"]
 [ext_resource type="PackedScene" uid="uid://c7bg808610anm" path="res://scenes/pause_menu.tscn" id="6_a1vf7"]
+[ext_resource type="PackedScene" uid="uid://dq1fysevc3twk" path="res://scenes/timer.tscn" id="6_sc74f"]
 [ext_resource type="PackedScene" uid="uid://k1c2d2ls26nu" path="res://scenes/recipient_area.tscn" id="7_2wt5h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjw2x"]
@@ -673,16 +675,20 @@ size = Vector2(22, 24)
 
 [node name="Game" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_a1vf7")]
-visible = false
-
-[node name="GameManager" parent="." node_paths=PackedStringArray("pause_menu", "truck", "recipients_folder") instance=ExtResource("1_41nem")]
-unique_name_in_owner = true
+[node name="GameManager" parent="." node_paths=PackedStringArray("pause_menu", "timer", "truck", "recipients_folder") instance=ExtResource("1_41nem")]
 pause_menu = NodePath("../CanvasLayer/PauseMenu")
+timer = NodePath("../TimerUI")
 truck = NodePath("../Truck")
 recipients_folder = NodePath("../Recipients")
+time_limit = 60.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("6_a1vf7")]
+visible = false
+game_manager = NodePath("../../GameManager")
+
+[node name="ScoreLabel" parent="CanvasLayer" instance=ExtResource("3_g4npx")]
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_08dui")
@@ -703,6 +709,12 @@ layer_1/tile_data = PackedInt32Array(786401, 262146, 5, 851937, 262146, 5, 91747
 layer_2/name = "Front"
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(-25, 1114114, 0, 65511, 1114114, 2, -24, 1179650, 0, 65512, 1179650, 2, -23, 1245186, 0, 65513, 1245186, 2, -65557, 1114114, 0, -21, 1114114, 1, 65515, 1114114, 2, -65556, 1179650, 0, -20, 1179650, 1, 65516, 1179650, 2, -65555, 1245186, 0, -19, 1245186, 1, 65517, 1245186, 2, 14, 1114114, 0, 65550, 1114114, 2, 15, 1245186, 0, 65551, 1245186, 2)
+
+[node name="TimerUI" parent="." instance=ExtResource("6_sc74f")]
+offset_left = 512.0
+offset_top = 433.0
+offset_right = 512.0
+offset_bottom = 433.0
 
 [node name="BorderLeft" type="StaticBody2D" parent="."]
 position = Vector2(-297, 486)

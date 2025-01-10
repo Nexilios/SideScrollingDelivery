@@ -1,7 +1,15 @@
 extends Node
 
+signal score_updated(score: int)
+
 var highscore: int = 0
 var current_score: int = 0
+
+func update_score(val: int) -> void:
+	current_score += val
+	
+	# Update UI
+	score_updated.emit(current_score)
 
 func _ready():
 	# Load the high score when the game starts

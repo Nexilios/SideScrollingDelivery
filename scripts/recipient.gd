@@ -1,6 +1,5 @@
 class_name Recipient extends PriorityArea2D
 
-signal package_delivered(score: int)
 signal update_truck(recipient_id: int)
 
 @onready var label: HoveringLabel = $HoveringLabel
@@ -45,8 +44,8 @@ func _on_handle_interaction(player: Player) -> void:
 		# Update truck to be able to spawn 1 more package to this recipient
 		update_truck.emit(get_id())
 		
-		# Update UI
-		package_delivered.emit(player.package_held.Score)
+		# Update Score
+		HighscoreManager.update_score(player.package_held.Score)
 		
 		# Clear player package_held so player able to pick up another package
 		player.package_delivered()
