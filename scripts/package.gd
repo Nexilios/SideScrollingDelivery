@@ -1,14 +1,21 @@
 class_name BasePackage extends RigidBody2D
 
-@onready var label: HoveringLabel = $Label
-@onready var collect_area: Area2D = $CollectArea
-
 @export var package_score: float = 50.0
 
+var _recipient_location: Vector2:
+	set = set_recipient_location,
+	get = get_recipient_location
 
 var _package_id: int:
-	set = set_package_id
+	set = set_package_id,
+	get = get_package_id
 	
+	
+func set_recipient_location(loc: Vector2) -> void:
+	_recipient_location = loc
+	
+func get_recipient_location() -> Vector2:
+	return _recipient_location
 
 func set_package_id(id: int) -> void:
 	if id >= 0:
@@ -16,18 +23,3 @@ func set_package_id(id: int) -> void:
 
 func get_package_id() -> int:
 	return _package_id
-
-func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
-		InputManager.register_area(collect_area)
-		if label:
-			label.start_animation()
-
-func _on_body_exited(body: Node2D) -> void:
-	if body is Player:
-		InputManager.unregister_area(collect_area)
-		if label:
-			label.stop_animation()
-
-func _handle_interaction() -> void:
-	pass # Replace with function body.

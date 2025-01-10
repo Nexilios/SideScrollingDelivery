@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://k1c2d2ls26nu"]
+
+[ext_resource type="Script" path="res://scripts/recipient.gd" id="1_6m0r2"]
+[ext_resource type="Script" path="res://scripts/hovering_label.gd" id="2_kq85f"]
+[ext_resource type="AudioStream" uid="uid://d0h46m4ngkk7q" path="res://assets/sounds/delivery_sfx.mp3" id="3_fealk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5mm3c"]
+font_color = Color(0.947199, 0.947199, 0.947199, 1)
+shadow_color = Color(0.10748, 0.10748, 0.10748, 0.580392)
+shadow_offset = Vector2(0.125, 1.1)
+
+[sub_resource type="Animation" id="Animation_nuops"]
+resource_name = "recipient_text_hover"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -47), Vector2(-20, -40), Vector2(-20, -47)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7nvj"]
+_data = {
+"recipient_text_hover": SubResource("Animation_nuops")
+}
+
+[node name="RecipientArea" type="Area2D"]
+collision_mask = 2
+input_pickable = false
+monitorable = false
+script = ExtResource("1_6m0r2")
+input_priority = 2
+
+[node name="PositionMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="HoveringLabel" type="Label" parent="." node_paths=PackedStringArray("animation_player")]
+offset_left = -20.0
+offset_top = -47.0
+offset_right = 20.0
+offset_bottom = -24.0
+text = "E"
+label_settings = SubResource("LabelSettings_5mm3c")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_kq85f")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HoveringLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_u7nvj")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fealk")
+volume_db = -6.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="handle_interaction" from="." to="." method="_on_handle_interaction"]

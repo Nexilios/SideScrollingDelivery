@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkyprnm4r55ag"]
+[gd_scene load_steps=10 format=3 uid="uid://bkyprnm4r55ag"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_k4knk"]
 [ext_resource type="Texture2D" uid="uid://daeaegn0u47hy" path="res://assets/character/tilemap-characters.png" id="2_iwedn"]
+[ext_resource type="PackedScene" uid="uid://bvorb3bstchs8" path="res://scenes/direction_arrow.tscn" id="3_mui1g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wimg1"]
 atlas = ExtResource("2_iwedn")
@@ -68,3 +69,7 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6.05)
 shape = SubResource("CircleShape2D_y2o81")
+
+[node name="DirectionArrow" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_mui1g")]
+position = Vector2(0, -38)
+player = NodePath("..")

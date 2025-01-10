@@ -1,3 +1,4 @@
+## Player character class
 class_name Player extends CharacterBody2D
 
 # Jump configuration
@@ -10,12 +11,24 @@ class_name Player extends CharacterBody2D
 @export var speed: float = 125.0
 @export var push_force: float = 30.0
 
+# Player animated sprite reference
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var direction_arrow: DeliveryArrow = $DirectionArrow
+
 # Automatically calculated physics variables
 var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
+var package_held: Dictionary
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+func package_collected(package_data: Dictionary) -> void:
+	package_held = package_data
+	direction_arrow.activate(package_held.Destination)
+	
+func package_delivered() -> void:
+	package_held.clear()
+	direction_arrow.deactivate()
 
 func _ready() -> void:
 	# Calculate initial jump velocity needed to reach desired height
@@ -28,9 +41,9 @@ func _ready() -> void:
 	fall_gravity = (2.0 * jump_height * cell_size) / pow(jump_time_to_descent, 2)
 
 # Handle Interactions
-func _unhandled_input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		InputManager.handle_interaction()
+		InputManager.handle_interaction(self)
 
 func _physics_process(delta: float) -> void:
 	# Apply appropriate gravity based on vertical movement

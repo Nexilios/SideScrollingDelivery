@@ -8,7 +8,7 @@ func register_area(area: PriorityArea2D):
 func unregister_area(area: PriorityArea2D):
 	interaction_areas.erase(area)
 	
-func handle_interaction():
+func handle_interaction(player: Player):
 	if interaction_areas.is_empty():
 		return
 		
@@ -20,4 +20,4 @@ func handle_interaction():
 	
 	# Handle only the highest priority interaction
 	if sorted_areas.size() > 0:
-		sorted_areas[0].handle_interaction.emit()
+		sorted_areas[0].handle_interaction.emit(player)

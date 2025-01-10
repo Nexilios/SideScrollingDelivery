@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/package.gd" id="1_hdy3s"]
 [ext_resource type="PackedScene" uid="uid://4skxeuoh7okk" path="res://scenes/hovering_label.tscn" id="2_djtao"]
-[ext_resource type="Script" path="res://scripts/priority_area2d.gd" id="2_fclgs"]
+[ext_resource type="Script" path="res://scripts/package_area.gd" id="2_rj1mu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7732v"]
 font_size = 20
@@ -12,6 +12,7 @@ shadow_color = Color(0.10748, 0.10748, 0.10748, 0.580392)
 shadow_offset = Vector2(0.855, 1.19)
 
 [node name="Package" type="RigidBody2D"]
+z_index = 1
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_hdy3s")
@@ -25,11 +26,12 @@ collision_layer = 4
 collision_mask = 2
 input_pickable = false
 monitorable = false
-script = ExtResource("2_fclgs")
+script = ExtResource("2_rj1mu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
 
 [node name="Label" parent="." instance=ExtResource("2_djtao")]
+unique_name_in_owner = true
 offset_left = -6.0
 offset_top = -40.0
 offset_right = 6.0
@@ -38,8 +40,8 @@ pivot_offset = Vector2(6, 40)
 text = "E"
 label_settings = SubResource("LabelSettings_7732v")
 
-[connection signal="body_entered" from="CollectArea" to="." method="_on_body_entered"]
-[connection signal="body_exited" from="CollectArea" to="." method="_on_body_exited"]
-[connection signal="handle_interaction" from="CollectArea" to="." method="_handle_interaction"]
+[connection signal="body_entered" from="CollectArea" to="CollectArea" method="_on_body_entered"]
+[connection signal="body_exited" from="CollectArea" to="CollectArea" method="_on_body_exited"]
+[connection signal="handle_interaction" from="CollectArea" to="CollectArea" method="_handle_interaction"]
 
 [editable path="Label"]
