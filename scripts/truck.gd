@@ -42,7 +42,7 @@ func _spawn_package() -> void:
 		var recipient_id: int = recipients_data[key].ID
 		var package: BasePackage = load(packages.pick_random()).instantiate()
 		
-		get_tree().root.add_child(package)
+		get_tree().current_scene.add_child(package)
 		package.set_package_id(recipient_id)
 		package.set_recipient_location(recipients_data[key].Location)
 		package.global_position = spawn_point.global_position

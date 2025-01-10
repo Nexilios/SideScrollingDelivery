@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7bg808610anm"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_2td3u"]
-[ext_resource type="StyleBox" uid="uid://cl77ayu4xuq5n" path="res://assets/styles/pause_button_normal.tres" id="2_qeeim"]
-[ext_resource type="StyleBox" uid="uid://dvrvjh30t00pt" path="res://assets/styles/pause_button_hover.tres" id="3_n4xdy"]
-[ext_resource type="StyleBox" uid="uid://duda7fwb0urwr" path="res://assets/styles/pause_button_pressed.tres" id="4_2lamd"]
+[ext_resource type="StyleBox" uid="uid://cl77ayu4xuq5n" path="res://assets/styles/pause_menu/pause_button_normal.tres" id="2_qqm4s"]
+[ext_resource type="StyleBox" uid="uid://dvrvjh30t00pt" path="res://assets/styles/pause_menu/pause_button_hover.tres" id="3_k5v7v"]
+[ext_resource type="StyleBox" uid="uid://duda7fwb0urwr" path="res://assets/styles/pause_menu/pause_button_pressed.tres" id="4_0tc5m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u0jrx"]
 font_size = 72
@@ -78,10 +78,10 @@ theme_override_colors/font_pressed_color = Color(0.813869, 0.609067, 0.290064, 1
 theme_override_colors/font_hover_color = Color(0.790712, 0.589043, 0.273252, 1)
 theme_override_colors/font_focus_color = Color(0.870588, 0.662745, 0.345098, 1)
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = ExtResource("2_qeeim")
-theme_override_styles/hover = ExtResource("3_n4xdy")
-theme_override_styles/pressed = ExtResource("4_2lamd")
-theme_override_styles/focus = ExtResource("2_qeeim")
+theme_override_styles/normal = ExtResource("2_qqm4s")
+theme_override_styles/hover = ExtResource("3_k5v7v")
+theme_override_styles/pressed = ExtResource("4_0tc5m")
+theme_override_styles/focus = ExtResource("2_qqm4s")
 text = "RESUME"
 
 [node name="MenuButton" type="Button" parent="VBoxContainer"]
@@ -92,10 +92,10 @@ theme_override_colors/font_pressed_color = Color(0.813869, 0.609067, 0.290064, 1
 theme_override_colors/font_hover_color = Color(0.790712, 0.589043, 0.273252, 1)
 theme_override_colors/font_focus_color = Color(0.870588, 0.662745, 0.345098, 1)
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = ExtResource("2_qeeim")
-theme_override_styles/hover = ExtResource("3_n4xdy")
-theme_override_styles/pressed = ExtResource("4_2lamd")
-theme_override_styles/focus = ExtResource("2_qeeim")
+theme_override_styles/normal = ExtResource("2_qqm4s")
+theme_override_styles/hover = ExtResource("3_k5v7v")
+theme_override_styles/pressed = ExtResource("4_0tc5m")
+theme_override_styles/focus = ExtResource("2_qqm4s")
 text = "MAIN MENU
 "
 
@@ -107,10 +107,10 @@ theme_override_colors/font_pressed_color = Color(0.813869, 0.609067, 0.290064, 1
 theme_override_colors/font_hover_color = Color(0.790712, 0.589043, 0.273252, 1)
 theme_override_colors/font_focus_color = Color(0.870588, 0.662745, 0.345098, 1)
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = ExtResource("2_qeeim")
-theme_override_styles/hover = ExtResource("3_n4xdy")
-theme_override_styles/pressed = ExtResource("4_2lamd")
-theme_override_styles/focus = ExtResource("2_qeeim")
+theme_override_styles/normal = ExtResource("2_qqm4s")
+theme_override_styles/hover = ExtResource("3_k5v7v")
+theme_override_styles/pressed = ExtResource("4_0tc5m")
+theme_override_styles/focus = ExtResource("2_qqm4s")
 text = "QUIT GAME
 "
 

@@ -4,7 +4,7 @@ signal game_ended(score: int)
 
 # UI
 @export var pause_menu: PauseMenu
-@export var game_over_menu: Control
+@export var game_over_menu: GameOverMenu
 @export var timer: GameTimer
 
 # Gameplay relevant
@@ -17,6 +17,9 @@ var game_is_over: bool = false
 var recipients: Array[Recipient]
 
 func _ready() -> void:
+	HighscoreManager.reset_state()
+	InputManager.reset_state()
+	
 	if recipients_folder:
 		for recp in recipients_folder.get_children():
 			recipients.append(recp)
@@ -50,7 +53,7 @@ func game_over() -> void:
 	get_tree().paused = true
 	
 	# Show game over scene
-	
+	game_over_menu.show_game_over()
 
 func stop_game(quit: bool) -> void:
 	HighscoreManager.save_highscore()

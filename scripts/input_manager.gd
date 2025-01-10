@@ -2,8 +2,12 @@ extends Node
 
 var interaction_areas: Array[PriorityArea2D] = []
 
+func reset_state() -> void:
+	interaction_areas.clear()
+
 func register_area(area: PriorityArea2D):
-	interaction_areas.append(area)
+	if not interaction_areas.has(area):
+		interaction_areas.append(area)
 	
 func unregister_area(area: PriorityArea2D):
 	interaction_areas.erase(area)

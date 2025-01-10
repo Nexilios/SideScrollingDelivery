@@ -36,3 +36,7 @@ func load_highscore() -> int:
 		file.close()
 		return saved_score
 	return 0
+	
+func reset_state() -> void:
+	current_score = 0
+	highscore = load_highscore()
