@@ -7,12 +7,19 @@ func _ready():
 	# Load the high score when the game starts
 	highscore = load_highscore()
 
-func save_highscore():
+func save_highscore(reset: bool = false) -> void:
+	if reset:
+		_save_highscore_to_file(0)
+		return
+		
 	if current_score > highscore:
 		highscore = current_score
-		var file = FileAccess.open("user://highscore.save", FileAccess.WRITE)
-		file.store_var(highscore)
-		file.close()
+		_save_highscore_to_file(highscore)
+
+func _save_highscore_to_file(score: int) -> void:
+	var file = FileAccess.open("user://highscore.save", FileAccess.WRITE)
+	file.store_var(score)
+	file.close()
 
 func load_highscore() -> int:
 	if FileAccess.file_exists("user://highscore.save"):
